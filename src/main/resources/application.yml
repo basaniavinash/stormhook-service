@@ -3,3 +3,16 @@ management:
     web:
       exposure:
         include: health,info,metrics
+
+spring:
+  datasource:
+    url: jdbc:postgresql://localhost:5432/stormhooks
+    username: appuser
+    password: apppass
+  jpa:
+    hibernate:
+      ddl-auto: validate   # or update/create for dev
+    properties:
+      hibernate.jdbc.time_zone: UTC
+  flyway:
+    validate-migration-naming: true
