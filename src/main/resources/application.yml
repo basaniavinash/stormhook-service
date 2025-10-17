@@ -3,7 +3,8 @@ management:
     web:
       exposure:
         include: health,info,metrics
-
+server:
+  port: 8081
 spring:
   datasource:
     url: jdbc:postgresql://localhost:5432/stormhooks
@@ -16,3 +17,12 @@ spring:
       hibernate.jdbc.time_zone: UTC
   flyway:
     validate-migration-naming: true
+  security:
+    oauth2:
+      resourceserver:
+        jwt:
+          jwk-set-uri: http://localhost:8080/.well-known/jwks.json
+stormhook:
+  jwt:
+    expected-issuer: "https://auth.stormhook.local"
+    expected-audience: "https://api.stormhook.local"
